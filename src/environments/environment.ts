@@ -18,3 +18,6 @@ export const firebaseConfig = {
 
 // VAPID key placeholder for Web Push
 export const vapidKey = 'BEmwoDGYPJ9h14XQlChU8BCaH8Frf6UhYWfKXmsh1zcCLlW-7rmbv0DQJ9PE2sLgSkk_waSQS7Ldpj5A3DS27Aw';
+
+// URL of notification send endpoint (deploy the server and set this to its /send URL)
+export const edgeFunctionUrl = '';
