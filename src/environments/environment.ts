@@ -4,6 +4,9 @@ export const environment = {
   supabaseUrl: 'https://deeutslnkuxkzwixdolr.supabase.co',
   // TODO: Replace with your Supabase anon/public key. NEVER put the service role key here.
   supabaseAnonKey: 'sb_publishable_Kg82HVww4dDp6R16OSO0gA_muMICrQ3'
+  ,
+  // URL of notification send endpoint (deploy the server and set this to its /send URL)
+  edgeFunctionUrl: ''
 };
 
 // Firebase configuration placeholders — replace with your project values
@@ -19,5 +22,4 @@ export const firebaseConfig = {
 // VAPID key placeholder for Web Push
 export const vapidKey = 'BEmwoDGYPJ9h14XQlChU8BCaH8Frf6UhYWfKXmsh1zcCLlW-7rmbv0DQJ9PE2sLgSkk_waSQS7Ldpj5A3DS27Aw';
 
-// URL of notification send endpoint (deploy the server and set this to its /send URL)
-export const edgeFunctionUrl = '';
+// (edgeFunctionUrl is available on `environment.edgeFunctionUrl`)
