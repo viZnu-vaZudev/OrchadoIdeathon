@@ -5,3 +5,7 @@ dist/
 # Firebase service account (do not commit private keys)
 scripts/firebase-service-account.json
 *service-account*.json
+## env files
+.env
+.env.local
+.env.*.local
