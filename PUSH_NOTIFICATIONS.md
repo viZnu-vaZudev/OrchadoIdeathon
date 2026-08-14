@@ -44,3 +44,6 @@ Notes & caveats:
 
 - Replace placeholder Firebase config and VAPID keys before production use.
 - Ensure your site is served over HTTPS (except `localhost`) for service workers and push to work.
+
+
+node scripts/send-test-notification.js "dDL4XpTh0LbLvcfPA_SrUj:APA91bERmFOu8DeXp7Pt6edeoWqi6fTq6WA-FfrT-4AEnPFNrYoMIsgPaOqbvicYZDqenWvFpZNs9suKoh97mxdYubUHhei5dPO1Q_c23bHP47xBQZGDFOQ" "New Idea Posted" "John has submitted a new idea" "/ideas"

@@ -10,10 +10,10 @@ import { NotificationService } from './services/notification.service';
   template: `
     <div style="position: fixed; left: 16px; bottom: 16px; z-index: 99998">
       <button (click)="enable()">Enable Notifications</button>
-      <div *ngIf="token">
+      <!-- <div *ngIf="token">
         <small>Token (copy to server):</small>
         <div style="max-width: 360px; word-break: break-all; background:#f3f3f3; padding:8px; border-radius:4px">{{ token }}</div>
-      </div>
+      </div> -->
     </div>
   `
 })
@@ -32,6 +32,12 @@ export class NotificationDemoComponent {
     const t = await this.fcm.requestPermissionAndToken();
     if (t) {
       this.token = t;
+      // trigger a local toast so we can confirm UI works
+      try {
+        this.ns.notifyLocal({ notification: { title: 'Notifications enabled', body: 'FCM token obtained' } });
+      } catch (e) {
+        console.error('Local notify failed', e);
+      }
     }
   }
 }

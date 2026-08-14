@@ -2,3 +2,6 @@ node_modules/
 dist/
 .angular/
 *.log
+# Firebase service account (do not commit private keys)
+scripts/firebase-service-account.json
+*service-account*.json
