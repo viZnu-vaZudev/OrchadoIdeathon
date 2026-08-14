@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from './supabase.service';
 import { Idea, IdeaWithAuthor } from '../models/idea.model';
+import { environment } from '../../../environments/environment';
 
 const IDEA_SELECT = 'id, title, description, created_by, created_at, updated_at, author:profiles(id, username, email, created_at), comments(count)';
 
@@ -87,6 +88,20 @@ export class IdeaService {
       .single();
 
     if (error) throw error;
+    // Trigger notification via Supabase Edge Function if configured
+    try {
+      const fnUrl = environment.edgeFunctionUrl || (window as any)?.__env__?.SUPABASE_EDGE_FUNCTION_URL;
+      if (fnUrl) {
+        // fire-and-forget
+        fetch(fnUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ideaId: data.id, excludeUserId: userId, title: data.title, body: data.description, url: `/ideas/${data.id}` })
+        }).catch((e) => console.error('Edge function notify error', e));
+      }
+    } catch (e) {
+      console.warn('Could not trigger edge function', e);
+    }
     return data as Idea;
   }
 
